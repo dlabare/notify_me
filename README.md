@@ -61,11 +61,11 @@ Current options:
 You can utilize a logger within that block, that will hold up to 5 MB worth of 
 logs that it will include in your notification email:
 
-  NotifyMe.after do |logger|
-    logger.info("Starting a task")
-    do_a_task
-    logger.info("Task was good")
-  end
+    NotifyMe.after do |logger|
+      logger.info("Starting a task")
+      do_a_task
+      logger.info("Task was good")
+    end
   
 After 5 MB worth of logs, it stops recording it to send in your email, however 
 it also logs them to your apps logs/notify_me.log file for you to review at your
