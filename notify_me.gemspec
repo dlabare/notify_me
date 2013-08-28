@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = NotifyMe::VERSION
   spec.authors       = ["Daniel LaBare"]
   spec.email         = ["dlabare@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Simple notification system}
+  spec.summary       = %q{Simple notification system}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -20,4 +20,5 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+  spec.add_dependency('actionmailer', '>= 3.0.0')
 end
