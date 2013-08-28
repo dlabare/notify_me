@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Daniel LaBare"]
   spec.email         = ["dlabare@gmail.com"]
   spec.description   = %q{Simple notification system}
-  spec.summary       = %q{Simple notification system}
+  spec.summary       = %q{Shoot yourself an email when critical stuff happens in your app}
   spec.homepage      = ""
   spec.license       = "MIT"
 
