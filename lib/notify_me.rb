@@ -11,6 +11,7 @@ module NotifyMe
   
   def self.after(options = {}, &block)
     options[:recipients]    ||= Config.recipients
+    options[:from]          ||= Config.from
     options[:subject]       ||= Config.default_subject
     options[:message]       ||= Config.default_message
     options[:logger]          = Logger.new # note that this is a NotifyMe::Logger instance

@@ -18,8 +18,6 @@ module NotifyMe
       end
     end
 
-    default :from => Config.from
-
     def notify_me_success(options = {})
       @message = options[:message] 
       @time    = options[:time]
