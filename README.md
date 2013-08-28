@@ -29,11 +29,17 @@ executes:
 It will fire off an email after completion so you can rest easy that something
 occurred.
 
+## Why?
+
+Well, that's up to you. Personally I have used it to make sure that certain
+critical cron tasks are running with success, and should they ever fail I want
+to know immediately with an explanation of why.
+
 ## Configuration
 
-You'll can configure some initial settings. You have access to:
+You can configure some initial settings. You have access to the global settings:
 
-    NotifyMe::Config.recipients = ['whoshouldgetit@test.com','orothers@test.com']
+    NotifyMe::Config.recipients = ['whoshouldgetit@test.com','others@test.com']
     NotifyMe::Config.from = 'MySite@mysite.com'
     
 Alternatively, you can override these when calling NotifyMe.after:
@@ -50,11 +56,38 @@ Current options:
     options[:subject]
     options[:message]
 
+## Logging
+
+You can utilize a logger within that block, that will hold up to 5 MB worth of 
+logs that it will include in your notification email:
+
+  NotifyMe.after do |logger|
+    logger.info("Starting a task")
+    do_a_task
+    logger.info("Task was good")
+  end
+  
+After 5 MB worth of logs, it stops recording it to send in your email, however 
+it also logs them to your apps logs/notify_me.log file for you to review at your
+leisure.
+
+This example would yield an email body of the following:
+
+    Event Complete
+
+    -------------------------------------------------------------------------------
+    Log data:
+    -------------------------------------------------------------------------------
+    Starting a task
+    Task was good
+
+    Task took: 0.000236 seconds
+
 ## Additional hooks
 
 If you want to add an observer to these NotifyMe events, you can do so by adding:
 
-    NotifyMe.observers(Object)
+    NotifyMe.add_observer(Object)
     
 So long as the Object in question responds to the methods :notify_me_success and :notify_me_failure
 
