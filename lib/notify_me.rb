@@ -35,6 +35,10 @@ module NotifyMe
     end
   end
   
+  def self.observers
+    @@observers
+  end
+  
   def self.clear_observers
     @@observers = []
   end
