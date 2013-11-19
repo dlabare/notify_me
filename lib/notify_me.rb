@@ -10,14 +10,11 @@ module NotifyMe
   @@observers = []
   
   def self.after(options = {}, &block)
-    options[:recipients]      ||= Config.recipients
-    options[:from]            ||= Config.from
-    options[:subject]         ||= Config.default_subject
-    options[:message]         ||= Config.default_message
-    options[:logger]            = Logger.new # note that this is a NotifyMe::Logger instance
-    options[:logger].formatter  = proc do |severity, datetime, progname, msg|
-      "#{datetime.utc.strftime("%Y-%m-%d %H:%M:%S")}#{datetime.utc.formatted_offset}: #{msg}\n"
-    end
+    options[:recipients]    ||= Config.recipients
+    options[:from]          ||= Config.from
+    options[:subject]       ||= Config.default_subject
+    options[:message]       ||= Config.default_message
+    options[:logger]          = Logger.new # note that this is a NotifyMe::Logger instance
     options[:time]            = Benchmark.realtime { yield options[:logger]}
     Mailer.send_email(:notify_me_success, options)
     notify_observers(:success, options)
