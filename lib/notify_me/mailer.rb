@@ -31,7 +31,7 @@ module NotifyMe
         :cc       => options[:cc],
         :from     => options[:from],
         :subject  => "#{Config.subject_leader}#{options[:subject]}",
-        :body     => render("#{File.dirname(__FILE__)}/emails/success")
+        :body     => render(file: "#{File.dirname(__FILE__)}/emails/success.text.erb")
       )
     end
 
@@ -44,7 +44,7 @@ module NotifyMe
         :cc       => options[:cc],
         :from     => options[:from],
         :subject  => "#{Config.subject_leader}FAILURE - #{options[:subject]}",
-        :body     => render("#{File.dirname(__FILE__)}/emails/failure")
+        :body     => render(file: "#{File.dirname(__FILE__)}/emails/failure.text.erb")
       )
     end
 
