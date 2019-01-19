@@ -33,7 +33,7 @@ module NotifyMe
           @memory_log << "Memory log limit reached, subsequent messages will not be stored, but can be found at: #{RAILS_ROOT}/log/notify_me.log"
         end
       end
-      
+
   end
 end
 

@@ -6,9 +6,9 @@ require 'notify_me/mailer'
 module NotifyMe
 
   class ObserverError < StandardError; end
-  
+
   @@observers = []
-  
+
   def self.after(options = {}, &block)
     options[:recipients]    ||= Config.recipients
     options[:from]          ||= Config.from
@@ -25,7 +25,7 @@ module NotifyMe
     notify_observers(:failure, options)
     raise e # re-raise the error
   end
-  
+
   def self.add_observer(object)
     @@observers ||= []
     if object.respond_to?(:notify_me_success) && object.respond_to?(:notify_me_failure)
@@ -34,15 +34,15 @@ module NotifyMe
       raise ObserverError.new("Could not add observer: #{object.inspect}. Class does not respond to :notify_me_success and :notify_me_failure")
     end
   end
-  
+
   def self.observers
     @@observers
   end
-  
+
   def self.clear_observers
     @@observers = []
   end
-  
+
   def self.notify_observers(action, options)
     @@observers.each do |object|
       begin
