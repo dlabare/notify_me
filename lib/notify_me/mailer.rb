@@ -32,8 +32,8 @@ module NotifyMe
         :from     => options[:from],
         :subject  => "#{Config.subject_leader}#{options[:subject]}"
       ) do |format|
-        format.text { render(file: "#{File.dirname(__FILE__)}/emails/success.text.erb", handlers: :erb) }
-        format.html { render(file: "#{File.dirname(__FILE__)}/emails/success.html.erb", handlers: :erb) }
+        format.text { render(file: "#{File.dirname(__FILE__)}/emails/success", formats: [:text], handlers: :erb) }
+        format.html { render(file: "#{File.dirname(__FILE__)}/emails/success", formats: [:html], handlers: :erb) }
       end
     end
 
@@ -47,8 +47,8 @@ module NotifyMe
         :from     => options[:from],
         :subject  => "#{Config.subject_leader}FAILURE - #{options[:subject]}",
       ) do |format|
-        format.text { render(file: "#{File.dirname(__FILE__)}/emails/failure.text.erb", handlers: :erb) }
-        format.html { render(file: "#{File.dirname(__FILE__)}/emails/failure.html.erb", handlers: :erb) }
+        format.text { render(file: "#{File.dirname(__FILE__)}/emails/failure", formats: [:text], handlers: :erb) }
+        format.html { render(file: "#{File.dirname(__FILE__)}/emails/failure", farmats: [:html], handlers: :erb) }
       end
     end
 
