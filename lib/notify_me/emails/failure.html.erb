@@ -1,1 +1,10 @@
-Failure!
+<b>Error Message</b><br>
+<p style="color:red">
+  <%= @error_message %>
+</p>
+
+<b>Backtrace</b><br>
+<p style="font-family:Courier">
+  <%= @error_backtrace if @error_backtrace %>
+</p>
+
