@@ -4,7 +4,7 @@
 <% if @memory_log.to_s.size > 0 %>
   <b>Log Data</b><br>
   <p style="font-family:Courier">
-    <%= @memory_log.to_s.split("\n").join("<br>") %>
+    <%= @memory_log.to_s.split("\n").join("<br>").html_safe %>
   </p>
 <% end %>
 

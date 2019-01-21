@@ -5,6 +5,6 @@
 
 <b>Backtrace</b><br>
 <p style="font-family:Courier">
-  <%= @error_backtrace.split("\n").join("<br>") if @error_backtrace %>
+  <%= @error_backtrace.split("\n").join("<br>").html_safe if @error_backtrace %>
 </p>
 
